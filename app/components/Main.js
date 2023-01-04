@@ -1,18 +1,48 @@
 import React from "react";
 import { useState } from "react";
-export default function Main() {
+import ReportTable from "./ReportTable";
+import { hourlySales } from "../../data";
+export default function Main({ show }) {
   const [location, setLoction] = useState("");
   const [minimum, setMinimum] = useState("");
   const [maximum, setMaximum] = useState("");
   const [avarage, setAvarage] = useState("");
-  const [flage, setFlage] = useState(false);
+  const [flag, setFlag] = useState(true);
+  const [stores, setStores] = useState([]);
+
+  function totalDay(arr) {
+    let total = 0;
+    arr.forEach((number) => (total += number));
+    return total;
+  }
+
   const handelSubmit = (e) => {
     e.preventDefault();
+    if (
+      !e.target.location.value ||
+      !e.target.minimum.value ||
+      !e.target.maximum.value ||
+      !e.target.avarage.value
+    ) {
+      return;
+    }
+
     setLoction(e.target.location.value);
     setMinimum(e.target.minimum.value);
     setMaximum(e.target.maximum.value);
     setAvarage(e.target.avarage.value);
-    setFlage(true);
+    setFlag(true);
+    let arr = hourlySales();
+    console.log(location);
+
+    let data = {
+      id: location.length + 1,
+      Location: e.target.location.value,
+      hourlySales: arr,
+      total: totalDay(arr),
+    };
+
+    setStores([...stores, data]);
   };
   return (
     <>
@@ -46,13 +76,18 @@ export default function Main() {
           </div>
         </form>
       </div>
-      <p className="text-center p-10"> Report Table Coming Soon...</p>
-      {flage && (
-        <div className="text-center p-10">
-          <p>
+
+      {flag && show && (
+        <div className="text-center p-10 overflow-auto	">
+          {/* <p>
             {`{ "location" :"${location}", "minCustomers": "${minimum}", "maxCustomers":${maximum},
             "avgCookies":${avarage}`}
-          </p>
+          </p> */}
+          {!stores.length ? (
+            <h2>No Cookie Stands Available</h2>
+          ) : (
+            <ReportTable stores={stores} />
+          )}
         </div>
       )}
     </>
