@@ -25,54 +25,68 @@ export default function ReportTable({ stores }) {
 
   if (stores.length == 0) {
     return (
-      <h2 className="w-1/2 mx-auto my-8 text-4xl text-center">
+      <h2 className=" dark:text-white dark:bg-black w-1/2 mx-auto my-8 text-4xl text-center">
         No Cookie Stands Available
       </h2>
     );
   } else {
     return (
-      <table className="w-1/2 mx-auto my-2 border">
+      <table className=" dark:text-white dark:border-white dark:bg-black w-1/2 mx-auto my-4 border-2 p-4 m-21.5">
         <thead>
-          <tr className="bg-emerald-500">
-            <th className="rounded-tl-lg">Location</th>
+          <tr className=" dark:text-white dark:bg-black bg-emerald-500">
+            <th className=" dark:text-white dark:bg-black rounded-tl-lg">
+              Location
+            </th>
             {openHours.map((item) => {
               return <th key={item}>{item}</th>;
             })}
-            <th className="rounded-tr-lg">Total</th>
+            <th className=" dark:text-white dark:bg-black rounded-tr-lg">
+              Total
+            </th>
           </tr>
         </thead>
 
-        <tbody>
+        <tbody className="p-2 dark:border-white">
           {stores.map((item, index) => {
             console.log(item);
             return (
               <tr
-                className="even:bg-emerald-200 odd:bg-emerald-400"
+                className=" dark:text-white dark:bg-black even:bg-emerald-200 odd:bg-emerald-400 dark:border-white"
                 key={index}
               >
-                <td className="p-2 border border-black ">{item.Location}</td>
+                <td className=" dark:text-white dark:bg-black p-2 border border-black dark:border-white">
+                  {item.Location}
+                </td>
 
                 {item.hourlySales.map((int, index) => (
-                  <td key={index} className="p-2 border border-black ">
+                  <td
+                    key={index}
+                    className=" dark:text-white dark:bg-black p-2 border border-black dark:border-white"
+                  >
                     {int}
                   </td>
                 ))}
-                <td className="p-3 border border-black ">{item.total}</td>
+                <td className=" dark:text-white dark:bg-black p-4 border border-black dark:border-white">
+                  {item.total}
+                </td>
               </tr>
             );
           })}
         </tbody>
 
         <tfoot>
-          <th className="p-2 font-bold border border-black bg-emerald-600">
+          <th className=" dark:text-white dark:bg-black p-2 font-bold border border-black bg-emerald-600 dark:border-white">
             Totals
           </th>
           {totalhourlySales(stores).map((item, idx) => (
-            <th key={idx} className="p-2 border border-black bg-emerald-600">
+            <th
+              key={idx}
+              className=" dark:text-white dark:bg-black p-2 border border-black bg-emerald-600"
+            >
               {item}
             </th>
           ))}
-          <th className="p-2 border border-black bg-emerald-600">
+          <th className=" dark:text-white dark:bg-black p-2 border border-black bg-emerald-600">
             {grandTotal}
           </th>
         </tfoot>
