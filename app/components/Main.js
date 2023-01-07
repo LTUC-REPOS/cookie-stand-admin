@@ -46,39 +46,41 @@ export default function Main({ show }) {
   };
   return (
     <>
-      <div className="h-48 bg-emerald-300 w-4/6 mt-8 ml-56 mr-64 rounded-lg">
-        <p className="text-xl text-center pt-3 font-bold">
+      <div className=" dark:text-white dark:bg-black h-48 bg-emerald-300 w-4/6 mt-8 ml-56 mr-64 rounded-lg p-5 ">
+        <p className=" dark:text-white dark:bg-black text-xl text-center pt-3 font-bold">
           Create Cookie Stand
         </p>
         <form onSubmit={handelSubmit}>
-          <div className="flex w-full p-4">
-            <label>Location</label>
+          <div className=" dark:text-white dark:bg-black flex w-full p-4">
+            <label className="p-2">Location</label>
             <input
               type="text"
               name="location"
-              className="w-full bg-indigo-100"
+              className=" dark:text-black dark:bg-white w-full bg-white p-2"
             />
           </div>
-          <div className="flex w-full p-4 justify-between">
-            <div className="col">
+          <div className=" dark:text-white dark:bg-black flex w-full  justify-between">
+            <div className=" dark:text-white dark:bg-black col">
               <label>Minimum Customers per Hour</label>
-              <input type="text" name="minimum" />
+              <input className="dark:text-black" type="text" name="minimum" />
             </div>
-            <div className="col">
+            <div className=" dark:text-white dark:bg-black col">
               <label>Maximum Customers per Hour</label>
-              <input type="text" name="maximum" />
+              <input className="dark:text-black" type="text" name="maximum" />
             </div>
-            <div className="col">
+            <div className=" dark:text-white dark:bg-black col">
               <label>Avarage Cookie per Sale</label>
-              <input type="text" name="avarage" />
+              <input className="dark:text-black" type="text" name="avarage" />
             </div>
-            <button className="w-40 bg-emerald-500">Create</button>
+            <button className=" dark:text-black dark:bg-white w-40 bg-emerald-500">
+              Create
+            </button>
           </div>
         </form>
       </div>
 
       {flag && show && (
-        <div className="text-center p-10 overflow-auto	">
+        <div className=" dark:text-white dark:bg-black text-center p-10 overflow-auto	">
           {/* <p>
             {`{ "location" :"${location}", "minCustomers": "${minimum}", "maxCustomers":${maximum},
             "avgCookies":${avarage}`}
