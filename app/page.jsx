@@ -3,14 +3,16 @@ import { Inter } from "@next/font/google";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Main from "./components/Main";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import ThemeWrapper from "./components/theme";
+import AuthWrapper, { AuthContext } from "./components/auth";
+import LoginForm from "./components/LoginForm";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const [toggle, setToggle] = useState(true);
-
+  const { token } = useContext(AuthContext);
   const showData = () => {
     setToggle(!toggle);
   };
@@ -18,7 +20,7 @@ export default function Home() {
   return (
     <ThemeWrapper>
       <Header showData={showData} />
-      <Main show={toggle} />
+      {token ? <Main show={toggle} /> : <LoginForm />}
       <Footer />
     </ThemeWrapper>
   );

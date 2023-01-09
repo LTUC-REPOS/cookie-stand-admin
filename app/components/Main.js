@@ -46,7 +46,7 @@ export default function Main({ show }) {
   };
   return (
     <>
-      <div className=" dark:text-white dark:bg-black h-48 bg-emerald-300 w-4/6 mt-8 ml-56 mr-64 rounded-lg p-5 ">
+      <div className=" dark:text-white dark:bg-black h-48 bg-emerald-300 w-4/6 mt-8 ml-56 mr-64 rounded-lg  ">
         <p className=" dark:text-white dark:bg-black text-xl text-center pt-3 font-bold">
           Create Cookie Stand
         </p>
